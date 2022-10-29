@@ -60,7 +60,7 @@ const App = () => {
 
   const sendWhatsappMessage = async () => {
 
-    const destinatarioNumero = destinatariosData[mensajeForm.idDestinatario].numero;
+    //const destinatarioNumero = destinatariosData[mensajeForm.idDestinatario].numero;
 
     const response = await fetch(POST_WHATSAPP_MSG, {
       method: 'POST',
