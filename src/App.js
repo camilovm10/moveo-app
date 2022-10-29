@@ -64,7 +64,6 @@ const App = () => {
     const destinatarioNumero = destinatariosData[mensajeForm.idDestinatario].numero;
 
     const response = await fetch(POST_WHATSAPP_MSG, {
-      mode: "no-cors",
       method: 'POST',
       headers: {
         'Accept': '*/*',
