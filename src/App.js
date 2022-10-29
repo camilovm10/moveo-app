@@ -58,7 +58,6 @@ const App = () => {
     }))
   }
 
-
   const sendWhatsappMessage = async () => {
 
     const destinatarioNumero = destinatariosData[mensajeForm.idDestinatario].numero;
@@ -66,9 +65,9 @@ const App = () => {
     const response = await fetch(POST_WHATSAPP_MSG, {
       method: 'POST',
       headers: {
-        'Accept': '*/*',
+        Accept: '*/*',
         'Content-Type': 'application/json',
-        'Authorization': 'Basic ZmU3MGIxMjY6dUJReGRrck5IdldUMVk5Vg=='
+        Authorization: 'Basic ZmU3MGIxMjY6dUJReGRrck5IdldUMVk5Vg=='
       },
       body: JSON.stringify({
         message_type: "text", 
@@ -81,8 +80,6 @@ const App = () => {
 
     console.log(response.status)
   };
-
-
 
   const [destinatariosData, setDestinatariosData] = useState([]);
   const [remitentesData, setRemitentesData] = useState([]);
@@ -106,7 +103,6 @@ const App = () => {
 
     setRemitentesData(data);
   }
-
 
   return (
     <div className="destinatariosDisponiblesContainer">
@@ -137,15 +133,15 @@ const App = () => {
 
       <div>
         <h2>Remitentes disponibles:</h2>
-        {destinatariosData?.length > 0 ? (
+        {remitentesData?.length > 0 ? (
         <div>
           <ul>
-          {destinatariosData.map((dest) => (
+          {remitentesData.map((rem) => (
             <li>
-              <h3>{`Remitente ${dest.id}`}</h3>
-              <p>{dest.nombre}</p>
-              <p>{dest.numero}</p>
-              <p>{dest.correo}</p>
+              <h3>{`Remitente ${rem.id}`}</h3>
+              <p>{rem.nombre}</p>
+              <p>{rem.numero}</p>
+              <p>{rem.correo}</p>
             </li>
           ))}
           </ul>
@@ -156,7 +152,6 @@ const App = () => {
           </div>
         )}
       </div>
-      
 
       <div>
         <h1>Detallar mensaje :</h1>
@@ -203,7 +198,6 @@ const App = () => {
         </button>
 
       </div>
-
     </div>
   );
 }
