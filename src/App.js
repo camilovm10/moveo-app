@@ -67,7 +67,8 @@ const App = () => {
       headers: {
         Accept: '*/*',
         'Content-Type': 'application/json',
-        Authorization: 'Basic ZmU3MGIxMjY6dUJReGRrck5IdldUMVk5Vg=='
+        Authorization: 'Basic ZmU3MGIxMjY6dUJReGRrck5IdldUMVk5Vg==',
+        
       },
       body: JSON.stringify({
         message_type: "text", 
@@ -162,7 +163,7 @@ const App = () => {
         <label>Id Destinatario:</label>
         <input 
           placeholder='destinatario...'
-          value={mensajeForm.destinatario}
+          value={mensajeForm.idDestinatario}
           onChange={(e) => setDestinatario(e.target.value)}
         />
 
@@ -182,7 +183,7 @@ const App = () => {
 
         <label>Id Remitente:</label>
         <input 
-          placeholder='Id remitente...'
+          placeholder='remitente...'
           value={mensajeForm.idRemitente}
           onChange={(e) => setIdRemitente(e.target.value)}
         />
