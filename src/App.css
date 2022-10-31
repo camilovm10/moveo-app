@@ -1,3 +1,101 @@
+
+.btn {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #3d578a;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 30px auto;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #5165bf;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+.disponibles_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.destinatarios_disponibles_container {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.remitentes_disponibles_container {
+
+}
+
+.disp_container {
+  margin: 40px 100px;
+}
+
+.mensajeria_app {
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  margin: 0px 30px;
+  padding: 50px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detallar_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  padding: 20px 80px;
+  border: 2px solid rgb(15, 75, 165);
+  border-radius: 5px;
+}
+
+.message_form {
+  display: inline-flex;
+  flex-direction: column;
+  flex-shrink: 1 1 200px;
+  flex-wrap: 1 1 200px;
+}
+
+.message_form_label {
+  margin: 15px 0px;
+  font-weight: 400;
+}
+
+
+
 .App {
   text-align: center;
 }
