@@ -5,7 +5,7 @@ const App = () => {
 
   const GET_DESTINATARIOS_URL = "https://evergreen20221026160756.azurewebsites.net/api/Destinatarios";
   const GET_REMITENTES_URL = "https://evergreen20221026160756.azurewebsites.net/api/Remitentes";
-  const POST_WHATSAPP_MSG = "https://messages-sandbox.nexmo.com/v1/messages";
+  const LAMBDA_API = "https://05ywckdu9a.execute-api.us-east-1.amazonaws.com/dev";
 
   const [mensajeForm, setMensajeForm] = useState({  
     idDestinatario: 0,
@@ -58,29 +58,38 @@ const App = () => {
     }))
   }
 
-  const sendWhatsappMessage = async () => {
 
-    //const destinatarioNumero = destinatariosData[mensajeForm.idDestinatario].numero;
+  const sendDataToAWSLambda = async () => {
 
-    const response = await fetch(POST_WHATSAPP_MSG, {
+    const idRemitenteInt = parseInt(mensajeForm.idRemitente, 10);
+    const idDestinatarioInt = (parseInt(mensajeForm.idDestinatario, 10) - 1);
+    const numeroDestinatario = destinatariosData[idDestinatarioInt].numero;
+
+    const body_lambda = JSON.stringify({
+      asunto: mensajeForm.asunto, 
+      cuerpo: mensajeForm.cuerpo,
+      idremitente: idRemitenteInt,
+      numeroDestinatario: numeroDestinatario
+    });
+
+    console.log(`Body to be sent to Lambda = ${body_lambda}`)
+
+    const response = await fetch(LAMBDA_API, {
       method: 'POST',
       headers: {
         Accept: '*/*',
         'Content-Type': 'application/json',
-        Authorization: 'Basic ZmU3MGIxMjY6dUJReGRrck5IdldUMVk5Vg==',
-        
       },
-      body: JSON.stringify({
-        message_type: "text", 
-        text: `${mensajeForm.asunto}: ${mensajeForm.cuerpo}`,
-        to: "573003575071",
-        from: "14157386102",
-        channel: "whatsapp"
-      })
+      body: body_lambda
     });
 
-    console.log(response.status)
+    const data = await response.json();
+
+    console.log(data.status)
+    console.log(data)
   };
+
+
 
   const [destinatariosData, setDestinatariosData] = useState([]);
   const [remitentesData, setRemitentesData] = useState([]);
@@ -192,7 +201,7 @@ const App = () => {
           type="button"
           onClick={(e) => {
             setEstado(1)
-            sendWhatsappMessage()
+            sendDataToAWSLambda()
           }}
         >
           Enviar
