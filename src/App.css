@@ -1,4 +1,13 @@
 
+ul {
+  list-style-type: none;
+  
+}
+
+li {
+  margin: 40px 10px;
+}
+
 .btn {
   align-items: center;
   background-clip: padding-box;
@@ -59,7 +68,11 @@
 }
 
 .disp_container {
-  margin: 40px 100px;
+  margin: 40px 130px;
+}
+
+.titles {
+  margin: 50px 0;
 }
 
 .mensajeria_app {

@@ -62,8 +62,11 @@ const App = () => {
   const sendDataToAWSLambda = async () => {
 
     const idRemitenteInt = parseInt(mensajeForm.idRemitente, 10);
-    const idDestinatarioInt = (parseInt(mensajeForm.idDestinatario, 10) - 1);
-    const numeroDestinatario = destinatariosData[idDestinatarioInt].numero;
+    let numeroDestinatario = null;
+
+    for (const element of destinatariosData) {
+      if (element.id == mensajeForm.idDestinatario) numeroDestinatario = element.numero;
+    }
 
     const body_lambda = JSON.stringify({
       asunto: mensajeForm.asunto, 
@@ -87,9 +90,9 @@ const App = () => {
 
     console.log(data.status)
     console.log(data)
+
+    handleClick();
   };
-
-
 
   const [destinatariosData, setDestinatariosData] = useState([]);
   const [remitentesData, setRemitentesData] = useState([]);
@@ -114,6 +117,18 @@ const App = () => {
     setRemitentesData(data);
   }
 
+  const handleClick = () => {
+    // 👇️ clear input value
+    setMensajeForm({
+    idDestinatario: 0,
+    asunto: "",
+    cuerpo: "",
+    fechaMensaje: "",
+    estado: "",
+    idRemitente: 0 
+    });
+  };
+
   return (
     <div className="mensajeria_app">
 
@@ -121,7 +136,7 @@ const App = () => {
 
       <div className='disponibles_container'>
         <div className="destinatarios_disponibles_container disp_container">
-          <h2>Destinatarios disponibles:</h2>
+          <h2 className='titles'>Destinatarios disponibles:</h2>
           {destinatariosData?.length > 0 ? (
           <div>
             <ul>
@@ -143,7 +158,7 @@ const App = () => {
         </div>
 
         <div className="remitentes_disponibles_container disp_container">
-          <h2>Remitentes disponibles:</h2>
+          <h2 className='titles'>Remitentes disponibles:</h2>
           {remitentesData?.length > 0 ? (
           <div>
             <ul>
@@ -205,7 +220,7 @@ const App = () => {
           type="button"
           onClick={(e) => {
             setEstado(1)
-            sendDataToAWSLambda()
+            sendDataToAWSLambda();
           }}
         >
           Enviar
