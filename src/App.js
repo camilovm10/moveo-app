@@ -62,10 +62,11 @@ const App = () => {
   const sendDataToAWSLambda = async () => {
 
     const idRemitenteInt = parseInt(mensajeForm.idRemitente, 10);
+    const idDestinatario = parseInt(mensajeForm.idDestinatario, 10);
     let numeroDestinatario = null;
 
     for (const element of destinatariosData) {
-      if (element.id == mensajeForm.idDestinatario) numeroDestinatario = element.numero;
+      if (element.id === idDestinatario) numeroDestinatario = element.numero;
     }
 
     const body_lambda = JSON.stringify({
