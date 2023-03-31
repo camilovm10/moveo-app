@@ -1,0 +1,12 @@
+.footer {
+    border: 1px solid #000;
+    background-color: #3d578a;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.footer-text {
+    margin: 30px 340px;
+}
