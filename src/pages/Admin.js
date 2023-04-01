@@ -9,7 +9,7 @@ const Admin = () => {
 
   const getUsersInDB = async () => {
 
-    const GET_USERS_ENDPOINT = "http://localhost:8000/api/v1/users";
+    const GET_USERS_ENDPOINT = "http://169.51.206.190:30179/api/v1/users";
 
     const response = await fetch(GET_USERS_ENDPOINT);
 
@@ -52,7 +52,7 @@ const User = ({userData}) => {
 
   const updateUserInDB = async () => {
 
-    const UPDATE_USER_ENDPOINT = `http://localhost:8000/api/v1/users/${userData.id}`;
+    const UPDATE_USER_ENDPOINT = `http://169.51.206.190:30179/api/v1/users/${userData.id}`;
 
     console.log(UPDATE_USER_ENDPOINT)
 
@@ -80,7 +80,7 @@ const User = ({userData}) => {
 
   const deleteUser = async () => {
 
-    const DELETE_USER_ENDPOINT = `http://localhost:8000/api/v1/users/${userData.id}`;
+    const DELETE_USER_ENDPOINT = `http://169.51.206.190:30179/api/v1/users/${userData.id}`;
 
     await fetch(DELETE_USER_ENDPOINT, {
       method: 'DELETE',

@@ -18,7 +18,7 @@ const Movies = () => {
 
     const searchMoviesAPI = async () => {
 
-        const GET_MOVIES_API_URL = "http://159.122.183.100:32341/api/v1.0/films";
+        const GET_MOVIES_API_URL = "http://150.239.7.20:32367/api/v1/peliculas/estrenos";
 
         const response = await fetch(GET_MOVIES_API_URL);
         const data = await response.json();
@@ -95,26 +95,24 @@ const Movies = () => {
             </div>
         </div>
 
+        <p>Proximos lanzamientos</p>
 
-        <p>Peliculas API Profe</p>
+        <div className='filtered-movies-container'>
+            {moviesData.map(movie => <PosterMovie movieData={movie} />)}
+        </div>
+
+        <h1>Peliculas proximamente en cartelera</h1>
 
         <div className='filtered-movies-container'>
             {moviesDataAPI.map(movie => <Movie movieData={movie} />)}
         </div>
 
-        <p>Proximos lanzamientos</p>
-
-        <div className='filtered-movies-container'>
-            {moviesData.map(movie => <Movie movieData={movie} />)}
-        </div>
         <Footer />
     </div>
   );
 }
 
 const Movie = ({movieData}) => {
-
-    const cines = movieData.cines;
 
     return (
         <div className='movie-item'>
@@ -123,11 +121,29 @@ const Movie = ({movieData}) => {
             <p>Director: {movieData.director}</p>
 
             <div>
-                <p>Se encuentra disponible en los cines:</p>
+                <h3>Encuentrala disponible en los siguientes cines:</h3>
+                <ul>
                 {
-                    movieData.cines.map(cine => <p>{cine.name}</p>)
+                    movieData.cines.map(cine => <li> {cine.name}</li>)
                 }
+                </ul>
             </div>
+        </div>
+    );
+}
+
+const PosterMovie = ({movieData}) => {
+
+    const cines = movieData.cines;
+
+    return (
+        <div className='movie-item'>
+            <h3>{movieData.Title}</h3>
+            <img
+                alt="Movie poster"
+                src={movieData.Poster}
+            />
+            <p>Year: {movieData.Year}</p>
         </div>
     );
 }

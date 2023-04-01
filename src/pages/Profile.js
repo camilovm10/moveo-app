@@ -17,7 +17,7 @@ const Profile = () => {
 
     const username = JSON.parse(sessionStorage.getItem('username'));
 
-    const GET_USER_ENDPOINT = "http://localhost:8000/api/v1/users";
+    const GET_USER_ENDPOINT = "http://169.51.206.190:30179/api/v1/users";
 
     const response = await fetch(GET_USER_ENDPOINT);
 
@@ -32,7 +32,7 @@ const Profile = () => {
 
   const updateUserInDB = async () => {
 
-    const UPDATE_USER_ENDPOINT = `http://localhost:8000/api/v1/users/${userData.id}`;
+    const UPDATE_USER_ENDPOINT = `http://169.51.206.190:30179/api/v1/users/${userData.id}`;
 
     console.log(UPDATE_USER_ENDPOINT)
 

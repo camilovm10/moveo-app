@@ -11,7 +11,7 @@ const Premium = () => {
 
   const getUserInDB = async (_user) => {
 
-    const GET_USER_ENDPOINT = "http://localhost:8000/api/v1/users";
+    const GET_USER_ENDPOINT = "http://169.51.206.190:30179/api/v1/users";
 
     const response = await fetch(GET_USER_ENDPOINT);
 
@@ -33,7 +33,7 @@ const Premium = () => {
 
   const updatePremiumPlan = async (boolean) => {
 
-    const PREMIUM_USER_ENDPOINT = `http://localhost:8000/api/v1/users/${userData.id}/premium`;
+    const PREMIUM_USER_ENDPOINT = `http://169.51.206.190:30179/api/v1/users/${userData.id}/premium`;
 
     const body_lambda = JSON.stringify({
       premium: boolean

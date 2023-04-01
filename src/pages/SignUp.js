@@ -124,7 +124,7 @@ const SignUp = () => {
 
   const createUserInDB = async () => {
 
-    const CREATE_USER_ENDPOINT = "http://localhost:8000/api/v1/users/create";
+    const CREATE_USER_ENDPOINT = "http://169.51.206.190:30179/api/v1/users/create";
 
     const body_lambda = JSON.stringify({
       first_name: loginForm.firstname, 
